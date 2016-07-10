@@ -9,7 +9,7 @@ Dependencies
 
 - WordNet 3.x files. Can be installed anywhere, script looks for them in
 ./wn by default. The -s option lets you specify an alternate WordNet file
-location.
+location. WordNet data can be acquired here: https://wordnet.princeton.edu/wordnet/download/
 
 - docopt. Creates command line interfaces right from your help text. I think
 this should become part of base python. :)
