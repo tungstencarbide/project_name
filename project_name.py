@@ -27,7 +27,9 @@ in the whole file to a list and pick random entries from it."""
     fh = open(fname)
     fh.seek(random.randrange(fsize))
     fh.readline()
-    return fh.readline().split()[0]
+    rtnval = fh.readline().split()[0]
+    fh.close()
+    return rtnval
 
 def file_path(path, name):
     return "%s/%s" % (path, name)
