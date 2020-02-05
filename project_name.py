@@ -42,12 +42,12 @@ def file_path(path, name):
 
 def main(args):
     wn_path = args['-s']
-    adj = random_word(file_path(wn_path, adj_file))
+    adj = random_word(file_path(wn_path, adj_file), args['-c'])
     while '-' in adj or '_' in adj:
-        adj = random_word(file_path(wn_path, adj_file))
+        adj = random_word(file_path(wn_path, adj_file), args['-c'])
     noun = random_word(file_path(wn_path, noun_file))
     while '-' in noun or '_' in noun or noun.endswith('ing'):
-        noun = random_word(file_path(wn_path, noun_file))
+        noun = random_word(file_path(wn_path, noun_file), args['-c'])
 
     return '%s %s' % (adj.upper(), noun.upper())
 
