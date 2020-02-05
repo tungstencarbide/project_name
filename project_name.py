@@ -47,4 +47,4 @@ def main(args):
 
 if __name__ == "__main__":
     args = docopt(__doc__, version="Project Name 0.0")
-    print main(args)
+    print (main(args))
