@@ -4,14 +4,16 @@
 Super secret project name generator!
 
 Usage:
-  project_name.py: [-s SOURCE]
+  project_name.py: [-c] [-s SOURCE]
 
 Options:
+  -c         use a cryptographically stronger method for random numbers
   -s SOURCE  specify location of WordNet 3.x files [default: ./wn]
 """
 import sys
 import os
 import random
+import secrets
 
 # pip install docopt (https://github.com/docopt/docopt)
 from docopt import docopt 
@@ -19,13 +21,17 @@ from docopt import docopt
 adj_file = "index.adj"
 noun_file = "index.noun"
 
-def random_word(fname):
+def random_word(fname, secret=False):
     """This is optimized for single use case. If you want to generate
 thousands at a time, probably a smarter strategy would be to just suck
 in the whole file to a list and pick random entries from it."""
     fsize = os.stat(fname).st_size
     fh = open(fname)
-    fh.seek(random.randrange(fsize))
+    if secret:
+        position = secrets.randbelow(fsize)
+    else:
+        position = random.randrange(fsize)
+    fh.seek(position)
     fh.readline()
     rtnval = fh.readline().split()[0]
     fh.close()
